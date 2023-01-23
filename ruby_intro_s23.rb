@@ -1,6 +1,14 @@
+require 'set'
 # Part 1
 def two_sum?(a, n)
   # ADD YOUR CODE HERE
+  index_value_map = Set.new
+  a.each { |value|
+    remaining = n - value
+    return true if index_value_map === remaining
+    index_value_map.add(value) }
+
+  return false
 end
 
 def max_sub_array(a)

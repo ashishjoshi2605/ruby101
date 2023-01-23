@@ -24,7 +24,9 @@ end
 
 def group_anagrams(a)
   # ADD YOUR CODE HERE
-  return a.sort.group_by {|word| word.chars.sort }.values
+  solution = a.sort.group_by {|word| word.chars.sort }.values
+  puts solution
+  return solution
 end
 
 # Part 2

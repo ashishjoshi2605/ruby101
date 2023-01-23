@@ -7,12 +7,19 @@ def two_sum?(a, n)
     remaining = n - value
     return true if index_value_map === remaining
     index_value_map.add(value) }
-
   return false
 end
 
 def max_sub_array(a)
   # ADD YOUR CODE HERE
+  max_sum = a[0]
+  current_sum = a[0]
+
+  (1...a.length).each { |i|
+    current_sum = [a[i], a[i] + current_sum].max
+    max_sum = [current_sum, max_sum].max
+  }
+  return max_sum
 end
 
 def group_anagrams(a)

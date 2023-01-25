@@ -32,17 +32,46 @@ end
 # Part 2
 def brackets_match?(s)
   # ADD YOUR CODE HERE
+  stack = []
+  (0...s.length).each do |i|
+      if s[i] == "[" or s[i] == "{" or s[i] == "(" then stack<<a[i]
+      else
+          if stack.length == 0
+              return false
+          if a[i]=="[" and stack[stack.length-1] == "]"
+              stack.remove_at(stack.length-1)
+          elsif a[i]=="{" and stack[stack.length-1] == "}"
+              stack.remove_at(stack.length-1)
+          elsif a[i]=="(" and stack[stack.length-1] == ")"
+              stack.remove_at(stack.length-1)
+          else
+              return false
+      end
+  if stack.length == 0 then return false 
+  return true
+
 end
 
 def remove_and_append_vowels(s)
   # ADD YOUR CODE HERE
+  n = s.length
+  (0...n).each do |i|
+    if s[i] == 'u' or s[i] == 'o' or s[i] == 'i' or s[i] == 'e' or s[i] == 'a' or s[i] == 'U' or s[i] == 'O' or s[i] == 'I' or s[i] == 'E' or s[i] == 'A' 
+      s=s+s[i]
+      s[i]="0"
+    end
+  s.tr('0','')
+  return s
 end
 
-def highest_frequency_word(s)
-  # ADD YOUR CODE HERE
-end
+# def highest_frequency_word(s)
+#   # ADD YOUR CODE HERE
+# end
 
-# Part 3
-class Book
-  # ADD YOUR CODE HERE
+# # Part 3
+# class Book
+#   # ADD YOUR CODE HERE
+# end
+
+puts brackets_match("{[]}")
 end

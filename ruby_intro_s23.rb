@@ -25,32 +25,31 @@ end
 def group_anagrams(a)
   # ADD YOUR CODE HERE
   solution = a.group_by {|word| word.chars.sort }.values
-  puts solution
   return solution
 end
 
 # Part 2
-def brackets_match?(s)
+def brackets_match?(string)
   # ADD YOUR CODE HERE
   stack = []
-  (0...s.length).each do |i|
-      if s[i] == "[" or s[i] == "{" or s[i] == "(" then stack<<a[i]
-      else
-          if stack.length == 0
-              return false
-          if a[i]=="[" and stack[stack.length-1] == "]"
-              stack.remove_at(stack.length-1)
-          elsif a[i]=="{" and stack[stack.length-1] == "}"
-              stack.remove_at(stack.length-1)
-          elsif a[i]=="(" and stack[stack.length-1] == ")"
-              stack.remove_at(stack.length-1)
-          else
-              return false
-      end
-  if stack.length == 0 then return false 
-  return true
 
+  string.each_char do |char|
+    if MAPPING.key?(char)
+      stack << MAPPING[char]
+    else
+      current_open = stack.pop
+      return false unless char == current_open
+    end
+  end
+
+  stack.empty?
 end
+
+MAPPING = {
+  '(' => ')',
+  '{' => '}',
+  '[' => ']'
+}.freeze
 
 def remove_and_append_vowels(s)
   # ADD YOUR CODE HERE

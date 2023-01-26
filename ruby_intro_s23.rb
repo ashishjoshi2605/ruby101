@@ -74,6 +74,3 @@ end
 # class Book
 #   # ADD YOUR CODE HERE
 # end
-
-puts brackets_match("{[]}")
-end

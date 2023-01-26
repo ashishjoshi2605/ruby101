@@ -63,7 +63,9 @@ def remove_and_append_vowels(s)
       result += char
   end
   end
-  return result + result_vowels
+  result += result_vowels
+  puts result
+  return result
 end
 
 # def highest_frequency_word(s)

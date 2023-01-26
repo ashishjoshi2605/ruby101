@@ -29,23 +29,23 @@ def group_anagrams(a)
 end
 
 # Part 2
-def brackets_match?(string)
+def brackets_match?(s)
   # ADD YOUR CODE HERE
   stack = []
 
-  string.each_char do |char|
-    if MAPPING.key?(char)
-      stack << MAPPING[char]
+  s.each_char do |c|
+    if BRACKETS.key?(c)
+      stack << BRACKETS[c]
     else
-      current_open = stack.pop
-      return false unless char == current_open
+      open_bracket = stack.pop
+      return false unless c == open_bracket
     end
   end
 
   stack.empty?
 end
 
-MAPPING = {
+BRACKETS = {
   '(' => ')',
   '{' => '}',
   '[' => ']'
@@ -53,14 +53,17 @@ MAPPING = {
 
 def remove_and_append_vowels(s)
   # ADD YOUR CODE HERE
-  n = s.length
-  (0...n).each do |i|
-    if s[i] == 'u' or s[i] == 'o' or s[i] == 'i' or s[i] == 'e' or s[i] == 'a' or s[i] == 'U' or s[i] == 'O' or s[i] == 'I' or s[i] == 'E' or s[i] == 'A' 
-      s=s+s[i]
-      s[i]="0"
-    end
-  s.tr('0','')
-  return s
+  vowels = Set.new(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+  result = ''
+  result_vowels = ''
+  a.each do |char|
+    if vowels === char
+      result_vowels += char
+    else
+      result += char
+  end
+  end
+  return result + result_vowels
 end
 
 # def highest_frequency_word(s)

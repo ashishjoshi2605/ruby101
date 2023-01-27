@@ -53,19 +53,15 @@ BRACKETS = {
 
 def remove_and_append_vowels(s)
   # ADD YOUR CODE HERE
-  vowels = Set.new(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
-  result = ''
-  result_vowels = ''
-  a.each do |char|
-    if vowels === char
-      result_vowels += char
-    else
-      result += char
+  n = s.length
+  (0...n).each do |i|
+    if s[i] == 'u' or s[i] == 'o' or s[i] == 'i' or s[i] == 'e' or s[i] == 'a' or s[i] == 'U' or s[i] == 'O' or s[i] == 'I' or s[i] == 'E' or s[i] == 'A' 
+      s=s+s[i]
+      s[i]="0"
+    end
   end
-  end
-  result += result_vowels
-  puts result
-  return result
+  s.delete! "0"
+  return s
 end
 
 def highest_frequency_word(s)

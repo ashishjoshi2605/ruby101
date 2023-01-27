@@ -68,9 +68,30 @@ def remove_and_append_vowels(s)
   return result
 end
 
-# def highest_frequency_word(s)
-#   # ADD YOUR CODE HERE
-# end
+def highest_frequency_word(s)
+  # ADD YOUR CODE HERE
+  words = s.downcase.split(/\W+/)
+  frequency = Hash.new(0)
+  words.each { |word| frequency[word] += 1 }
+  max_app = 0
+  max_word = []
+  frequency.each do |key , value|
+    if value > max_app 
+      max_app = value
+      max_word = [key]
+    elsif value == max_app
+      max_word.append(key)
+    end
+  end
+  if max_word.length == 1
+    return max_word[0]
+  end
+  i = words.length
+  max_word.each do |word|
+    i = [words.find_index(word), i].min
+  end
+  return words[i]
+end
 
 # # Part 3
 # class Book

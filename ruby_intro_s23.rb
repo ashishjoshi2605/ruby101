@@ -89,7 +89,38 @@ def highest_frequency_word(s)
   return words[i]
 end
 
-# # Part 3
-# class Book
-#   # ADD YOUR CODE HERE
-# end
+# Part 3
+class Book
+  @title
+  @price
+  # ADD YOUR CODE HERE
+  def initialize(title, price)
+    raise ArgumentError.new(
+      "Expected a non empty string value for title, got #{title}"
+    ) if title == nil or title == ""
+    @title = title
+
+    raise ArgumentError.new(
+      "Expected a non negative value for price, got #{price}"
+    ) if price == nil or price < 0
+    @price = price
+  end
+
+  def formatted_price
+    parts = @price.to_s.split(".")
+    if parts.length == 1
+      if parts[0] == "1"
+        return "1 dollar"
+      else
+        return "#{parts[0]} dollars"
+      end
+    else
+      if parts[0] == "1"
+        return "1 dollar and #{parts[1]} cents"
+      else
+        return "#{parts[0]} dollars and #{parts[1]} cents"
+    end
+  end
+
+end
+end
